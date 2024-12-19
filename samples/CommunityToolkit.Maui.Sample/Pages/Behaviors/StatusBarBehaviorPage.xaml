@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<pages:BasePage
+    x:Class="CommunityToolkit.Maui.Sample.Pages.Behaviors.StatusBarBehaviorPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:pages="clr-namespace:CommunityToolkit.Maui.Sample.Pages"
+    xmlns:vm="clr-namespace:CommunityToolkit.Maui.Sample.ViewModels.Behaviors"
+    Title="StatusBarBehavior"
+    x:DataType="vm:StatusBarBehaviorViewModel"
+    x:TypeArguments="vm:StatusBarBehaviorViewModel"
+    x:Name="Page">
+
+    <ContentPage.Resources>
+        <ControlTemplate x:Key="RadioButtonTemplate">
+            <Border Stroke="#F3F2F1"
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 10"
+                    BackgroundColor="#F3F2F1"
+                    HeightRequest="90"
+                    WidthRequest="90"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CheckedStates">
+                            <VisualState x:Name="Checked">
+                                <VisualState.Setters>
+                                    <Setter TargetName="check"
+                                            Property="Opacity"
+                                            Value="1" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Unchecked">
+                                <VisualState.Setters>
+                                    <Setter TargetName="check"
+                                            Property="Opacity"
+                                            Value="0" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+                <Grid Margin="4"
+                      WidthRequest="90"
+                      BackgroundColor="Transparent">
+                    <Grid Margin="0,0,4,0"
+                          WidthRequest="18"
+                          HeightRequest="18"
+                          HorizontalOptions="End"
+                          VerticalOptions="Start">
+                        <Ellipse Stroke="Blue"
+                                 Fill="White"
+                                 WidthRequest="16"
+                                 HeightRequest="16"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center" />
+                        <Ellipse x:Name="check"
+                                 Fill="Blue"
+                                 WidthRequest="8"
+                                 HeightRequest="8"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center" />
+                    </Grid>
+                    <ContentPresenter />
+                </Grid>
+            </Border>
+        </ControlTemplate>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="ControlTemplate" Value="{StaticResource RadioButtonTemplate}" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Page.Behaviors>
+        <mct:StatusBarBehavior
+            BindingContext="{Binding Path=BindingContext, Source={x:Reference Page}, x:DataType=ContentPage}"
+            StatusBarColor="{Binding StatusBarColor}"
+            StatusBarStyle="{Binding StatusBarStyle}" />
+    </Page.Behaviors>
+
+    <ScrollView Padding="{StaticResource ContentPadding}">
+
+        <VerticalStackLayout Padding="15,0" Spacing="30">
+
+            <Label Text="Slide to change StatusBar color" />
+
+            <Label Text="Red" />
+            <Slider
+                Margin="20,0"
+                Maximum="1"
+                MaximumTrackColor="Red"
+                Minimum="0"
+                MinimumTrackColor="Red"
+                ThumbColor="Red"
+                Value="{Binding RedSliderValue}" />
+
+            <Label Text="Green" />
+            <Slider
+                Margin="20,0"
+                Maximum="1"
+                MaximumTrackColor="Green"
+                Minimum="0"
+                MinimumTrackColor="Green"
+                ThumbColor="Green"
+                Value="{Binding GreenSliderValue}" />
+
+            <Label Text="Blue" />
+            <Slider
+                Margin="20,0"
+                Maximum="1"
+                MaximumTrackColor="Blue"
+                Minimum="0"
+                MinimumTrackColor="Blue"
+                ThumbColor="Blue"
+                Value="{Binding BlueSliderValue}" />
+            <HorizontalStackLayout>
+                <Label Text="Alpha: " />
+                <Label Text="{Binding AlphaSliderValue}"/>
+            </HorizontalStackLayout>
+           
+            <Stepper
+                HorizontalOptions="Start"
+                Margin="20,0"
+                Maximum="1"
+                Increment="0.1"
+                Minimum="0"
+                Value="{Binding AlphaSliderValue}" />
+
+            <Label Text="Select StatusBar and NavigationBar style" />
+            
+            <HorizontalStackLayout Spacing="15">
+
+                
+
+                <RadioButton
+                    Content="Default"
+                    IsChecked="{Binding IsDefaultChecked}"
+                    VerticalOptions="Center" />
+
+                <RadioButton VerticalOptions="Center" IsChecked="{Binding IsLightContentChecked}">
+                    <RadioButton.Content>
+                        <Label Text="Light Content" Margin="10,0,0,0" VerticalTextAlignment="Center"
+                               VerticalOptions="Center" />
+                    </RadioButton.Content>
+                </RadioButton>
+
+                <RadioButton IsChecked="{Binding IsDarkContentChecked}">
+                    <RadioButton.Content>
+                        <Label Text="Dark Content" Margin="10,0,0,0" VerticalTextAlignment="Center"
+                               VerticalOptions="Center" />
+                    </RadioButton.Content>
+                </RadioButton>
+
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</pages:BasePage>

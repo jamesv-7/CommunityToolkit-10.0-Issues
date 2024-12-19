@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<Shell
+    FlyoutBackgroundColor="{OnPlatform WinUI=Transparent,
+                                       Default={AppThemeBinding Light=White,
+                                                                Dark=Black}}"
+    FlyoutBehavior="{OnPlatform WinUI=Locked,
+                                Default=Flyout}"
+    Padding="4,0,0,0"
+    Title="{OnPlatform WinUI='Toolkit Features',
+                       Default={x:Null}}"
+    x:Class="CommunityToolkit.Maui.Sample.AppShell"
+    x:Name="flyout"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:alerts="clr-namespace:CommunityToolkit.Maui.Sample.Pages.Alerts"
+    xmlns:behaviors="clr-namespace:CommunityToolkit.Maui.Sample.Pages.Behaviors"
+    xmlns:converters="clr-namespace:CommunityToolkit.Maui.Sample.Pages.Converters"
+    xmlns:essentials="clr-namespace:CommunityToolkit.Maui.Sample.Pages.Essentials"
+    xmlns:extensions="clr-namespace:CommunityToolkit.Maui.Sample.Pages.Extensions"
+    xmlns:imagesources="clr-namespace:CommunityToolkit.Maui.Sample.Pages.ImageSources"
+    xmlns:layouts="clr-namespace:CommunityToolkit.Maui.Sample.Pages.Layouts"
+    xmlns:pages="clr-namespace:CommunityToolkit.Maui.Sample.Pages"
+    xmlns:sys="clr-namespace:System;assembly=netstandard"
+    xmlns:views="clr-namespace:CommunityToolkit.Maui.Sample.Pages.Views"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Shell.FlyoutHeader>
+        <Label
+            FontSize="24"
+            HorizontalTextAlignment="Start"
+            IsVisible="{OnPlatform WinUI=false,
+                                   Default=true}"
+            Margin="{OnPlatform Default='0,0,0,12',
+                                iOS='0',
+                                MacCatalyst='0'}"
+            Padding="{OnPlatform Default='4,0',
+                                 iOS='4, 100, 4, 0',
+                                 WinUI='20, 0',
+                                 MacCatalyst='4, 100, 4, 0'}"
+            Text="Toolkit Features"
+            VerticalTextAlignment="Center" />
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem
+        Icon="{OnPlatform Default='dotnet_bot.png',
+                          MacCatalyst={x:Null}}"
+        Route="WelcomePage"
+        Title="Welcome">
+        <ShellContent ContentTemplate="{DataTemplate pages:WelcomePage}" />
+    </FlyoutItem>
+
+    <FlyoutItem
+        Icon="{OnPlatform Default='dotnet_bot.png',
+                          MacCatalyst={x:Null}}"
+        Route="AlertsGalleryPage"
+        Title="Alerts">
+        <ShellContent ContentTemplate="{DataTemplate alerts:AlertsGalleryPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem
+        Icon="{OnPlatform Default='dotnet_bot.png',
+                          MacCatalyst={x:Null}}"
+        Route="BehaviorsGalleryPage"
+        Title="Behaviors">
+        <ShellContent ContentTemplate="{DataTemplate behaviors:BehaviorsGalleryPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem
+        Icon="{OnPlatform Default='dotnet_bot.png',
+                          MacCatalyst={x:Null}}"
+        Route="ConvertersGalleryPage"
+        Title="Converters">
+        <ShellContent ContentTemplate="{DataTemplate converters:ConvertersGalleryPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem
+        Icon="{OnPlatform Default='dotnet_bot.png',
+                          MacCatalyst={x:Null}}"
+        Route="EssentialsGalleryPage"
+        Title="Essentials">
+        <ShellContent ContentTemplate="{DataTemplate essentials:EssentialsGalleryPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem
+        Icon="{OnPlatform Default='dotnet_bot.png',
+                          MacCatalyst={x:Null}}"
+        Route="ExtensionsGalleryPage"
+        Title="Extensions">
+        <ShellContent ContentTemplate="{DataTemplate extensions:ExtensionsGalleryPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem
+        FlyoutIcon="{OnPlatform Default='dotnet_bot.png',
+                                MacCatalyst={x:Null}}"
+        Route="ImageSourcesGalleryPage"
+        Title="ImageSources">
+        <ShellContent ContentTemplate="{DataTemplate imagesources:ImageSourcesGalleryPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem
+        Icon="{OnPlatform Default='dotnet_bot.png',
+                          MacCatalyst={x:Null}}"
+        Route="LayoutsGalleryPage"
+        Title="Layouts">
+        <ShellContent ContentTemplate="{DataTemplate layouts:LayoutsGalleryPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem
+        Icon="{OnPlatform Default='dotnet_bot.png',
+                          MacCatalyst={x:Null}}"
+        Route="PlatformSpecificGallerypage"
+        Title="Platform-Specific">
+        <ShellContent ContentTemplate="{DataTemplate pages:PlatformSpecificGalleryPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem
+        Icon="{OnPlatform Default='dotnet_bot.png',
+                          MacCatalyst={x:Null}}"
+        Route="ViewsGalleryPage"
+        Title="Views">
+        <ShellContent ContentTemplate="{DataTemplate views:ViewsGalleryPage}" />
+    </FlyoutItem>
+
+    <Shell.FlyoutFooter>
+        <Label
+            HorizontalOptions="End"
+            Padding="4"
+            VerticalOptions="End" />
+    </Shell.FlyoutFooter>
+</Shell>
